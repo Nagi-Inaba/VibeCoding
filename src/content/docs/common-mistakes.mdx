@@ -1,0 +1,40 @@
+---
+title: よくある失敗
+description: AIが迷う原因を、能力不足ではなく作業条件から見直す。
+---
+
+<p className="lead">AIが迷うときは、能力不足ではなく、作業条件が見えていないことがあります。まずは材料、目的、置き場所をそろえましょう。</p>
+
+<div className="mistake-grid">
+  <div className="mistake-card">
+    <h3>いきなり全部作らせる</h3>
+    <p>範囲が広すぎると、AIは勝手に前提を作りやすくなります。</p>
+    <p><strong>直し方:</strong> まず構成、次に一部、最後に全体へ進めます。</p>
+  </div>
+  <div className="mistake-card">
+    <h3>作業場所を決めない</h3>
+    <p>元資料、作業中、完成物が混ざると、AIも人間も迷います。</p>
+    <p><strong>直し方:</strong> `sources/`, `notes/`, `outputs/`, `logs/` に分けます。</p>
+  </div>
+  <div className="mistake-card">
+    <h3>途中結果を見ない</h3>
+    <p>最後まで任せると、方向違いに気づくのが遅くなります。</p>
+    <p><strong>直し方:</strong> 「まず案だけ」「まだ変更しないで」を使います。</p>
+  </div>
+  <div className="mistake-card">
+    <h3>エラー文を省略する</h3>
+    <p>「動かない」だけでは、原因候補が広すぎます。</p>
+    <p><strong>直し方:</strong> エラー文、直前の操作、期待した結果を渡します。</p>
+  </div>
+  <div className="mistake-card">
+    <h3>毎回ゼロから説明する</h3>
+    <p>前回の判断や未完了が消えると、同じ確認が増えます。</p>
+    <p><strong>直し方:</strong> 作業記録を残し、「これを読んで続き」と頼みます。</p>
+  </div>
+  <div className="mistake-card">
+    <h3>確認せずに完成扱いする</h3>
+    <p>見た目が整っていても、リンク切れや説明不足が残ることがあります。</p>
+    <p><strong>直し方:</strong> 公開前チェックの観点を指定します。</p>
+  </div>
+</div>
+

@@ -1,0 +1,65 @@
+---
+title: AIが迷わないフォルダ構成
+description: 材料、メモ、成果物、記録を分けるだけでAIへの指示は短くなる。
+---
+
+<p className="lead">フォルダ構成は、AIへの説明書です。どこに材料があり、どこに完成物を置くのかが決まっていると、AIは余計な確認をせずに動きやすくなります。</p>
+
+## 最小構成
+
+初心者は、まず4つで十分です。
+
+```text
+project/
+  sources/
+  notes/
+  outputs/
+  logs/
+```
+
+<table className="folder-table">
+  <caption>まずは4つの置き場所だけを決めます。材料、メモ、完成物、記録を混ぜないことが目的です。</caption>
+  <thead>
+    <tr><th>フォルダ</th><th>入れるもの</th><th>入れない方がよいもの</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>sources/</code></td><td>参考記事、PDF、画像、元データ、依頼文</td><td>完成した文章、提出物、作業ログ</td></tr>
+    <tr><td><code>notes/</code></td><td>アイデア、方針、気づき、未整理の文章</td><td>最終版、外に出す成果物</td></tr>
+    <tr><td><code>outputs/</code></td><td>公開ページ、記事、資料、生成された成果物</td><td>元資料、雑メモ</td></tr>
+    <tr><td><code>logs/</code></td><td>今日やったこと、確認結果、次にやること</td><td>元資料の置き場そのもの</td></tr>
+  </tbody>
+</table>
+
+## 慣れてきたら増やす
+
+```text
+project/
+  sources/
+  notes/
+  outputs/
+  docs/
+  logs/
+  rules/
+  templates/
+  archive/
+```
+
+- `docs/`: README、仕様、ページ原稿、操作説明
+- `rules/`: 文体、禁止事項、確認手順、公開前チェック
+- `templates/`: 記事テンプレート、作業記録テンプレート、レビュー依頼文
+- `archive/`: 古い案、使わなくなったもの、参照だけ残したいもの
+
+## フォルダ構成の頼み方
+
+<div className="copy-block">
+<pre>{`この作業に必要な最小フォルダ構成を提案してください。
+初心者でも運用できるように、各フォルダに何を入れるかも書いてください。`}</pre>
+</div>
+
+## 注意点
+
+- 最初から細かく分けすぎない
+- フォルダ名は毎回同じにする
+- 迷ったファイルは一時的に `notes/` に入れてよい
+- 完成物と材料だけは混ぜない
+- AIに「このフォルダ構成を前提に作業して」と伝える

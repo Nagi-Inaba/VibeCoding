@@ -1,0 +1,136 @@
+---
+import '../styles/custom.css';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathname;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="短い指示でAIが動ける環境を作る、バイブコーディング初心者向けガイド。" />
+    <title>Vibe Coding Guide</title>
+    <link rel="icon" href={link('favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="landing-shell">
+      <header class="landing-topbar">
+        <a class="landing-brand" href={link('./')} aria-label="Vibe Coding Guide トップ">
+          <img src={link('favicon.svg')} alt="" width="34" height="34" />
+          <span>Vibe Coding Guide</span>
+        </a>
+        <nav class="landing-nav" aria-label="主要ナビゲーション">
+          <a href={link('what-is-vibe-coding/')}>はじめに</a>
+          <a href={link('short-prompts/')}>短い指示が効く理由</a>
+          <a href={link('asking/')}>場面別の頼み方</a>
+          <a href={link('folder-structure/')}>フォルダ構成</a>
+          <a href={link('work-log/')}>作業記録</a>
+          <a href={link('common-mistakes/')}>よくある失敗</a>
+          <a href={link('start/')}>はじめの一歩</a>
+        </nav>
+        <a class="github-button" href="https://docs.github.com/ja/pages" aria-label="GitHub Pages公式ドキュメントを開く">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
+          <span>GitHub Pages公式</span>
+        </a>
+      </header>
+
+      <main class="landing-main">
+        <section class="hero-grid" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <h1 id="hero-title">短い指示でAIが動ける環境を作る</h1>
+            <p>プロンプトを長くする前に、AIが迷わない作業場所と頼み方を整える。</p>
+            <div class="hero-actions" aria-label="主要な導線">
+              <a href={link('asking/')}>場面別に見る <span aria-hidden="true">→</span></a>
+              <a href={link('folder-structure/')}>フォルダ構成を見る <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-points" aria-label="このサイトで学べること">
+              <div class="point">
+                <strong>短い指示でOK</strong>
+                <span>整理された環境なら、短い指示でも意図が伝わる。</span>
+              </div>
+              <div class="point">
+                <strong>迷わない構成</strong>
+                <span>役割ごとに分けたフォルダで、AIが必要な情報にすぐ届く。</span>
+              </div>
+              <div class="point">
+                <strong>記録が効く</strong>
+                <span>作業ログを残すことで、再現性と精度が上がる。</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-shell" aria-label="ガイドサイトの内容プレビュー">
+            <div class="preview-nav" aria-hidden="true">
+              <strong>Vibe Coding Guide</strong>
+              <span aria-current="page">はじめに</span>
+              <span>短い指示が効く理由</span>
+              <span>場面別の頼み方</span>
+              <span>フォルダ構成</span>
+              <span>作業記録</span>
+              <span>よくある失敗</span>
+              <span>はじめの一歩</span>
+            </div>
+            <div class="preview-content">
+              <h2>場面別の頼み方（例）</h2>
+              <table class="example-table">
+                <caption>困った場面から1行だけ選んで使う頼み方の例です。</caption>
+                <thead>
+                  <tr><th>場面</th><th>指示</th><th>効く理由</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>機能を作る</td><td>ログイン機能を追加して</td><td>目的が明確で、必要な範囲が限定される。</td></tr>
+                  <tr><td>バグを直す</td><td>ログインでエラーになる原因を直して</td><td>再現手順が明確で、修正箇所が特定しやすい。</td></tr>
+                  <tr><td>整理する</td><td>認証まわりのコードを整理して</td><td>対象が明確で、影響範囲を判断しやすい。</td></tr>
+                  <tr><td>確認する</td><td>公開前に分かりにくい表現を見て</td><td>確認観点が決まり、指摘が具体的になる。</td></tr>
+                </tbody>
+              </table>
+
+              <h2>フォルダ構成（例）</h2>
+              <div class="folder-preview">
+                <pre class="tree">{`/workspace
+├─ sources/
+├─ notes/
+├─ outputs/
+└─ logs/`}</pre>
+                <div class="folder-list">
+                  <div class="folder-row"><strong>sources/</strong><span>元資料や参照元を置く。</span></div>
+                  <div class="folder-row"><strong>notes/</strong><span>考え途中のメモを置く。</span></div>
+                  <div class="folder-row"><strong>outputs/</strong><span>完成物や提出物を置く。</span></div>
+                  <div class="folder-row"><strong>logs/</strong><span>作業記録や確認結果を残す。</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="landing-next" aria-labelledby="next-title">
+          <h2 id="next-title">短い指示が効く理由</h2>
+          <p>AIは「どこに何があるか」「何をしてほしいか」が明確だと、短い指示でも正しく動けます。まずは、初心者が今日から真似できる作業場所の整え方と場面別の頼み方から始めます。</p>
+          <div class="reason-strip">
+            <div class="reason-item">
+              <h3>場所が決まっている</h3>
+              <p>必要な情報が決まった場所にあると、AIが迷わず見つけられる。</p>
+            </div>
+            <div class="reason-item">
+              <h3>目的が絞られている</h3>
+              <p>指示が短くても、やることが明確なら正しいアウトプットになる。</p>
+            </div>
+            <div class="reason-item">
+              <h3>記録で改善が進む</h3>
+              <p>結果や判断を記録すると、次の作業が速く、正確になる。</p>
+            </div>
+          </div>
+          <p><a class="next-link" href={link('short-prompts/')}>詳しく見る <span aria-hidden="true">→</span></a></p>
+        </section>
+      </main>
+
+      <footer class="landing-footer">
+        <p>内部の仕組みではなく、今日から真似できる作業の型としてまとめた初心者向けガイドです。</p>
+      </footer>
+    </div>
+  </body>
+</html>

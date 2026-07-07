@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+npm-debug.log*
+*.local
+.codex/qa/
+.astro-preview.pid
+astro-preview.*.log
