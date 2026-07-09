@@ -35,8 +35,8 @@ export default defineConfig({
       social: [
         {
           icon: 'github',
-          label: 'GitHub Pages公式',
-          href: 'https://docs.github.com/ja/pages',
+          label: '公開する前に',
+          href: `${base.endsWith('/') ? base : `${base}/`}publish-check/`,
         },
       ],
       sidebar: [
@@ -74,6 +74,7 @@ export default defineConfig({
           label: '失敗を減らす',
           items: [
             { label: 'チェックリスト', slug: 'checklists' },
+            { label: '公開する前に', slug: 'publish-check' },
             { label: 'よくある失敗', slug: 'common-mistakes' },
             { label: 'うまく動かなくなったときの戻し方', slug: 'recover' },
           ],

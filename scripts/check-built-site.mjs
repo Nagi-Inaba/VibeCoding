@@ -20,6 +20,7 @@ const requiredRoutes = [
   '/common-mistakes/',
   '/practice/',
   '/checklists/',
+  '/publish-check/',
   '/glossary/',
   '/my-vibe-coding/',
   '/tools/',

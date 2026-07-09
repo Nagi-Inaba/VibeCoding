@@ -36,9 +36,9 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
           <a href={link('my-vibe-coding/')}>近道</a>
           <a href={link('tools/')}>ツール</a>
         </nav>
-        <a class="github-button" href="https://docs.github.com/ja/pages" aria-label="GitHub Pages公式ドキュメントを開く">
+        <a class="github-button" href={link('publish-check/')} aria-label="公開前チェックを開く">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
-          <span>GitHub Pages公式</span>
+          <span>公開する前に</span>
         </a>
       </header>
 
@@ -49,8 +49,8 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
             <p>プロンプトを長くする前に、AIが迷わない作業場所と頼み方を整える。</p>
             <div class="hero-actions" aria-label="主要な導線">
               <a href={link('start/')}>はじめの一歩から始める <span aria-hidden="true">→</span></a>
-              <a href={link('asking/')}>場面別に見る <span aria-hidden="true">→</span></a>
-              <a href={link('tools/')}>よく使うツールを見る <span aria-hidden="true">→</span></a>
+              <a href={link('practice/')}>小さな実践例を1回通す <span aria-hidden="true">→</span></a>
+              <a href={link('publish-check/')}>公開する前に見る <span aria-hidden="true">→</span></a>
             </div>
             <div class="ai-shortcut" aria-labelledby="ai-shortcut-title">
               <strong id="ai-shortcut-title">一気に進めたいとき</strong>
@@ -59,20 +59,20 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
               <a href={link('my-vibe-coding/')}>大きく近道する考え方を見る <span aria-hidden="true">→</span></a>
               <a href={link('tools/')}>よく使うツールを開く <span aria-hidden="true">→</span></a>
             </div>
-            <p class="reading-order-label">まず読む4つ</p>
-            <ol class="reading-order" aria-label="おすすめの読む順番">
-              <li><a href={link('start/')}>はじめの一歩</a></li>
-              <li><a href={link('asking/')}>頼み方</a></li>
-              <li><a href={link('folder-structure/')}>フォルダ構成</a></li>
-              <li><a href={link('recover/')}>戻し方</a></li>
+            <p class="reading-order-label">迷ったら、この順番</p>
+            <ol class="reading-order" aria-label="読者の状態別おすすめ導線">
+              <li><a href={link('what-is-vibe-coding/')}>まず理解する</a></li>
+              <li><a href={link('start/')}>すぐ始める</a></li>
+              <li><a href={link('recover/')}>困ったら見る</a></li>
+              <li><a href={link('my-vibe-coding/')}>慣れてから広げる</a></li>
             </ol>
             <p class="after-reading">
-              あとで読むページ:
+              最初の1回は
               <a href={link('what-is-vibe-coding/')}>考え方</a>、
-              <a href={link('short-prompts/')}>短い指示</a>、
+              <a href={link('start/')}>はじめの一歩</a>、
               <a href={link('practice/')}>小さな実践例</a>、
-              <a href={link('glossary/')}>用語集</a>。
-              大きく近道したいときだけ、<a href={link('my-vibe-coding/')}>近道</a> と <a href={link('tools/')}>ツール</a> を開きます。
+              <a href={link('checklists/')}>チェックリスト</a>
+              だけで十分です。用語に迷ったら <a href={link('glossary/')}>用語集</a>、公開するなら <a href={link('publish-check/')}>公開する前に</a>、大きく近道したいときだけ <a href={link('tools/')}>ツール</a> を開きます。
             </p>
             <div class="hero-points" aria-label="このサイトで学べること">
               <div class="point">
