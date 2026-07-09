@@ -22,6 +22,7 @@ const requiredRoutes = [
   '/checklists/',
   '/glossary/',
   '/my-vibe-coding/',
+  '/tools/',
 ];
 
 function assertFile(filePath, label) {

@@ -68,6 +68,7 @@
     const oldTimer = resetTimers.get(button);
     if (oldTimer) window.clearTimeout(oldTimer);
 
+    const resetDelay = state === 'error' ? 6000 : 1800;
     const timer = window.setTimeout(() => {
       button.removeAttribute('data-copy-state');
       button.removeAttribute('data-copy-status');
@@ -76,7 +77,7 @@
       button.innerHTML = copyIcon;
       statusElement.textContent = '';
       resetTimers.delete(button);
-    }, 1800);
+    }, resetDelay);
 
     resetTimers.set(button, timer);
   }
@@ -111,7 +112,7 @@
           await writeClipboard(text);
           setButtonState(button, statusElement, 'copied', 'コピーしました', checkIcon);
         } catch {
-          setButtonState(button, statusElement, 'error', 'コピーできませんでした', copyIcon);
+          setButtonState(button, statusElement, 'error', 'コピーできませんでした。本文を選択してコピーしてください', copyIcon);
         }
       });
 

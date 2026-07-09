@@ -56,16 +56,26 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
             <div class="ai-shortcut" aria-labelledby="ai-shortcut-title">
               <strong id="ai-shortcut-title">一気に進めたいとき</strong>
               <p>このサイトのURLをAIに貼って「この内容を読んで、ここに書いてある進め方で私の作業環境を整えたいです」と頼むと、フォルダ構成、最初の依頼文、確認手順までまとめやすくなります。</p>
+              <p>AIがURLを読めないときは、まず「はじめの一歩」と「場面別の頼み方」の本文を貼ってください。全部を一度に渡すより、必要なページから順番に渡す方が安定します。</p>
               <a href={link('my-vibe-coding/')}>大きく近道する考え方を見る <span aria-hidden="true">→</span></a>
               <a href={link('tools/')}>よく使うツールを開く <span aria-hidden="true">→</span></a>
             </div>
-            <p class="reading-order-label">おすすめの読む順番</p>
+            <p class="reading-order-label">まず読む4つ</p>
             <ol class="reading-order" aria-label="おすすめの読む順番">
               <li><a href={link('start/')}>はじめの一歩</a></li>
               <li><a href={link('asking/')}>頼み方</a></li>
               <li><a href={link('folder-structure/')}>フォルダ構成</a></li>
               <li><a href={link('recover/')}>戻し方</a></li>
             </ol>
+            <p class="after-reading">
+              あとで読むページ:
+              <a href={link('what-is-vibe-coding/')}>考え方</a>、
+              <a href={link('voice-input/')}>音声入力</a>、
+              <a href={link('short-prompts/')}>短い指示</a>、
+              <a href={link('practice/')}>小さな実践例</a>、
+              <a href={link('glossary/')}>用語集</a>。
+              大きく近道したいときだけ、<a href={link('my-vibe-coding/')}>近道</a> と <a href={link('tools/')}>ツール</a> を開きます。
+            </p>
             <div class="hero-points" aria-label="このサイトで学べること">
               <div class="point">
                 <strong>要件メモで開始</strong>
@@ -82,7 +92,8 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
             </div>
           </div>
 
-          <div class="preview-shell" aria-label="ガイドサイトの内容プレビュー">
+          <section class="preview-shell" aria-labelledby="preview-title">
+            <h2 id="preview-title" class="sr-only">ガイドサイトの内容プレビュー</h2>
             <div class="preview-nav" aria-hidden="true">
               <strong>Vibe Coding Guide</strong>
               <span aria-current="page">はじめに</span>
@@ -125,7 +136,7 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </section>
 
         <section class="landing-next" aria-labelledby="next-title">
