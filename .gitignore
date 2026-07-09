@@ -8,3 +8,4 @@ npm-debug.log*
 .codex/qa/
 .astro-preview.pid
 astro-preview.*.log
+playwright-*.png

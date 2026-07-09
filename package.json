@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "qa": "npm run build && node scripts/check-built-site.mjs",
+    "qa:site": "node scripts/check-built-site.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -22,6 +22,15 @@ export default defineConfig({
         alt: '',
       },
       favicon: '/favicon.svg',
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: `${base.endsWith('/') ? base.slice(0, -1) : base}/copy-blocks.js`,
+            defer: true,
+          },
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       social: [
         {
@@ -35,13 +44,14 @@ export default defineConfig({
           label: 'はじめる',
           items: [
             { label: 'はじめに', link: '/' },
-            { label: 'バイブコーディングとは', slug: 'what-is-vibe-coding' },
             { label: 'はじめの一歩', slug: 'start' },
+            { label: 'バイブコーディングとは', slug: 'what-is-vibe-coding' },
           ],
         },
         {
           label: '頼み方を学ぶ',
           items: [
+            { label: '音声入力で下書きする', slug: 'voice-input' },
             { label: '短い指示が効く理由', slug: 'short-prompts' },
             { label: '場面別の頼み方', slug: 'asking' },
             { label: '依頼テンプレート', slug: 'templates' },
@@ -52,6 +62,7 @@ export default defineConfig({
           items: [
             { label: 'フォルダ構成', slug: 'folder-structure' },
             { label: '作業記録', slug: 'work-log' },
+            { label: 'うまく動かなくなったときの戻し方', slug: 'recover' },
             { label: 'よくある失敗', slug: 'common-mistakes' },
           ],
         },
@@ -61,6 +72,12 @@ export default defineConfig({
             { label: '小さな実践例', slug: 'practice' },
             { label: 'チェックリスト', slug: 'checklists' },
             { label: '用語集', slug: 'glossary' },
+          ],
+        },
+        {
+          label: '応用・参考',
+          items: [
+            { label: '個人的なバイブコーディング観', slug: 'my-vibe-coding' },
           ],
         },
       ],
