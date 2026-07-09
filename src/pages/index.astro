@@ -34,6 +34,8 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
           <a href={link('recover/')}>戻し方</a>
           <a href={link('work-log/')}>作業記録</a>
           <a href={link('common-mistakes/')}>よくある失敗</a>
+          <a href={link('my-vibe-coding/')}>近道</a>
+          <a href={link('tools/')}>ツール</a>
         </nav>
         <a class="github-button" href="https://docs.github.com/ja/pages" aria-label="GitHub Pages公式ドキュメントを開く">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
@@ -49,6 +51,13 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
             <div class="hero-actions" aria-label="主要な導線">
               <a href={link('start/')}>はじめの一歩から始める <span aria-hidden="true">→</span></a>
               <a href={link('asking/')}>場面別に見る <span aria-hidden="true">→</span></a>
+              <a href={link('tools/')}>よく使うツールを見る <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="ai-shortcut" aria-labelledby="ai-shortcut-title">
+              <strong id="ai-shortcut-title">一気に進めたいとき</strong>
+              <p>このサイトのURLをAIに貼って「この内容を読んで、ここに書いてある進め方で私の作業環境を整えたいです」と頼むと、フォルダ構成、最初の依頼文、確認手順までまとめやすくなります。</p>
+              <a href={link('my-vibe-coding/')}>大きく近道する考え方を見る <span aria-hidden="true">→</span></a>
+              <a href={link('tools/')}>よく使うツールを開く <span aria-hidden="true">→</span></a>
             </div>
             <p class="reading-order-label">おすすめの読む順番</p>
             <ol class="reading-order" aria-label="おすすめの読む順番">

@@ -376,9 +376,37 @@ body {
   box-shadow: 0 14px 30px rgba(0, 109, 115, 0.18);
 }
 
-.hero-actions a:last-child {
+.hero-actions a:not(:first-child) {
   background: #fff;
   color: var(--vc-teal-dark);
+}
+
+.ai-shortcut {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 34rem;
+  border: 1px solid var(--vc-line);
+  border-left: 4px solid var(--vc-teal);
+  border-radius: var(--vc-radius);
+  padding: 0.9rem 1rem;
+  background: #f9fbfb;
+}
+
+.ai-shortcut strong {
+  color: var(--vc-teal-dark);
+}
+
+.ai-shortcut p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.ai-shortcut a {
+  justify-self: start;
+  color: var(--vc-teal-dark);
+  font-weight: 800;
+  text-decoration-color: color-mix(in srgb, var(--vc-teal-dark) 65%, transparent);
+  text-underline-offset: 0.16em;
 }
 
 .reading-order-label {
@@ -814,6 +842,33 @@ body {
   line-height: 1.9;
 }
 
+@media (max-width: 49.999rem) {
+  html {
+    scroll-padding-top: 1rem;
+  }
+
+  .page > .header {
+    position: static;
+  }
+
+  .main-frame {
+    padding-top: 0;
+  }
+
+  starlight-menu-button button {
+    position: absolute;
+  }
+
+  mobile-starlight-toc nav {
+    position: static;
+    border-top: 0;
+  }
+
+  mobile-starlight-toc .dropdown {
+    max-height: 65vh;
+  }
+}
+
 @media (max-width: 1050px) {
   .landing-topbar {
     position: static;
@@ -877,7 +932,15 @@ body {
   }
 
   .github-button {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 14rem;
     justify-content: center;
+    white-space: normal;
+  }
+
+  .github-button span {
+    overflow-wrap: anywhere;
   }
 
   .landing-main {
