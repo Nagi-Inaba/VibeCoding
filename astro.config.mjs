@@ -51,7 +51,6 @@ export default defineConfig({
         {
           label: '最初の一周',
           items: [
-            { label: '音声入力で下書きする', slug: 'voice-input' },
             { label: 'はじめの一歩', slug: 'start' },
             { label: '小さな実践例', slug: 'practice' },
           ],
@@ -84,6 +83,7 @@ export default defineConfig({
           items: [
             { label: '大きく近道する考え方', slug: 'my-vibe-coding' },
             { label: 'よく使うツール', slug: 'tools' },
+            { label: 'Typeless', link: '/tools/#typeless' },
             { label: '既存ツールを探す', link: '/my-vibe-coding/#まず楽をする' },
             { label: 'AIと目線を合わせる', link: '/my-vibe-coding/#自分をaiだと思って考える' },
             { label: 'プロの進め方に乗せる', link: '/my-vibe-coding/#いきなりコードを書かせない' },
