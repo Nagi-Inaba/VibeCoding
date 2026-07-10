@@ -5,6 +5,18 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathname;
+const navItems = [
+  ['start/', 'はじめの一歩'],
+  ['what-is-vibe-coding/', '考え方'],
+  ['short-prompts/', '短い指示'],
+  ['asking/', '場面別の頼み方'],
+  ['folder-structure/', 'フォルダ構成'],
+  ['recover/', '戻し方'],
+  ['work-log/', '作業記録'],
+  ['common-mistakes/', 'よくある失敗'],
+  ['my-vibe-coding/', '近道'],
+  ['tools/', 'ツール'],
+];
 ---
 
 <!doctype html>
@@ -24,22 +36,15 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
           <img src={link('favicon.svg')} alt="" width="34" height="34" />
           <span>Vibe Coding Guide</span>
         </a>
-        <nav class="landing-nav" aria-label="主要ナビゲーション">
-          <a href={link('start/')}>はじめの一歩</a>
-          <a href={link('what-is-vibe-coding/')}>考え方</a>
-          <a href={link('short-prompts/')}>短い指示</a>
-          <a href={link('asking/')}>場面別の頼み方</a>
-          <a href={link('folder-structure/')}>フォルダ構成</a>
-          <a href={link('recover/')}>戻し方</a>
-          <a href={link('work-log/')}>作業記録</a>
-          <a href={link('common-mistakes/')}>よくある失敗</a>
-          <a href={link('my-vibe-coding/')}>近道</a>
-          <a href={link('tools/')}>ツール</a>
+        <nav class="landing-nav landing-nav--desktop" aria-label="主要ナビゲーション">
+          {navItems.map(([href, label]) => <a href={link(href)}>{label}</a>)}
         </nav>
-        <a class="github-button" href={link('publish-check/')} aria-label="公開前チェックを開く">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.3 1.9 1.3 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.8c0 .4.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
-          <span>公開する前に</span>
-        </a>
+        <details class="landing-menu">
+          <summary>メニュー</summary>
+          <nav class="landing-nav landing-nav--mobile" aria-label="モバイル主要ナビゲーション">
+            {navItems.map(([href, label]) => <a href={link(href)}>{label}</a>)}
+          </nav>
+        </details>
       </header>
 
       <main id="main-content" class="landing-main" tabindex="-1">
@@ -50,7 +55,6 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
             <div class="hero-actions" aria-label="主要な導線">
               <a href={link('start/')}>はじめの一歩から始める <span aria-hidden="true">→</span></a>
               <a href={link('practice/')}>小さな実践例を1回通す <span aria-hidden="true">→</span></a>
-              <a href={link('publish-check/')}>公開する前に見る <span aria-hidden="true">→</span></a>
             </div>
             <div class="ai-shortcut" aria-labelledby="ai-shortcut-title">
               <strong id="ai-shortcut-title">一気に進めたいとき</strong>
@@ -72,7 +76,7 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
               <a href={link('start/')}>はじめの一歩</a>、
               <a href={link('practice/')}>小さな実践例</a>、
               <a href={link('checklists/')}>チェックリスト</a>
-              だけで十分です。用語に迷ったら <a href={link('glossary/')}>用語集</a>、公開するなら <a href={link('publish-check/')}>公開する前に</a>、大きく近道したいときだけ <a href={link('tools/')}>ツール</a> を開きます。
+              だけで十分です。用語に迷ったら <a href={link('glossary/')}>用語集</a>、他の人に使ってもらうなら <a href={link('publish-check/')}>人に使ってもらう前に</a>、大きく近道したいときだけ <a href={link('tools/')}>ツール</a> を開きます。
             </p>
             <div class="hero-points" aria-label="このサイトで学べること">
               <div class="point">
@@ -84,8 +88,8 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
                 <span>大きな変更の前に保存し、動かなくなったら止まって確認する。</span>
               </div>
               <div class="point">
-                <strong>公開前に確かめる</strong>
-                <span>事実、リンク、個人情報、スマホ表示を見てから出す。</span>
+                <strong>実際に触って確かめる</strong>
+                <span>実画面、入力、リンク、エラー状態を見てから次へ進む。</span>
               </div>
             </div>
           </div>
@@ -115,7 +119,7 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
                   <tr><td>機能を作る</td><td>ログイン機能を追加して</td><td>目的が明確で、必要な範囲が限定される。</td></tr>
                   <tr><td>バグを直す</td><td>ログインでエラーになる原因を直して</td><td>再現手順が明確で、修正箇所が特定しやすい。</td></tr>
                   <tr><td>整理する</td><td>認証まわりのコードを整理して</td><td>対象が明確で、影響範囲を判断しやすい。</td></tr>
-                  <tr><td>確認する</td><td>公開前に分かりにくい表現を見て</td><td>確認観点が決まり、指摘が具体的になる。</td></tr>
+                  <tr><td>確認する</td><td>初めて見る人に分かりにくい表現を見て</td><td>確認観点が決まり、指摘が具体的になる。</td></tr>
                 </tbody>
               </table>
 
@@ -151,7 +155,7 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
             </div>
             <div class="reason-item">
               <h3>確認で無駄を減らす</h3>
-              <p>方針確認、戻れる地点、公開前チェックでやり直しを減らす。</p>
+              <p>方針確認、戻れる地点、実画面と作業記録でやり直しを減らす。</p>
             </div>
           </div>
           <p><a class="next-link" href={link('short-prompts/')}>詳しく見る <span aria-hidden="true">→</span></a></p>
@@ -162,5 +166,16 @@ const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathn
         <p>内部の仕組みではなく、今日から真似できる作業の型としてまとめた初心者向けガイドです。</p>
       </footer>
     </div>
+    <script>
+      const mobileMenu = document.querySelector<HTMLDetailsElement>('details.landing-menu');
+      const mobileMenuSummary = mobileMenu?.querySelector<HTMLElement>('summary');
+
+      mobileMenuSummary?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          mobileMenu.open = !mobileMenu.open;
+        }
+      });
+    </script>
   </body>
 </html>

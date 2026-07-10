@@ -1,0 +1,24 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { LinkButton } from '@astrojs/starlight/components';
+
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const frontmatter = {
+  title: 'ページがありません',
+  template: 'splash',
+  pagefind: false,
+  hero: {
+    tagline: '探しているページは移動したか、まだ作成されていない可能性があります。',
+  },
+};
+---
+
+<StarlightPage {frontmatter} hasSidebar={false}>
+  <div class="sl-flex actions">
+    <LinkButton href={`${basePath}start/`} icon="right-arrow">はじめの一歩へ戻る</LinkButton>
+    <LinkButton href={basePath}>トップへ戻る</LinkButton>
+  </div>
+</StarlightPage>

@@ -103,7 +103,7 @@ body {
   top: 0;
   z-index: 20;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: clamp(0.8rem, 1.4vw, 1.4rem);
   min-height: 72px;
@@ -197,36 +197,8 @@ body {
   color: var(--vc-teal-dark);
 }
 
-.github-button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-self: end;
-  flex: 0 0 auto;
-  gap: 0.45rem;
-  border: 1px solid var(--vc-line);
-  border-radius: var(--vc-radius);
-  padding: 0.55rem 0.72rem;
-  color: var(--vc-ink);
-  line-height: 1.15;
-  text-decoration: none;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.github-button::before {
-  position: absolute;
-  top: 0.1rem;
-  bottom: 0.1rem;
-  left: -0.72rem;
-  width: 1px;
-  background: var(--vc-line);
-  content: "";
-}
-
-.github-button svg {
-  width: 20px;
-  height: 20px;
+.landing-menu {
+  display: none;
 }
 
 .landing-main {
@@ -926,16 +898,57 @@ body {
 @media (max-width: 760px) {
   .landing-topbar {
     position: static;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    min-height: 0;
     padding: 1rem;
   }
 
-  .landing-nav {
+  .landing-nav--desktop {
+    display: none;
+  }
+
+  .landing-menu {
+    display: block;
+    justify-self: end;
+  }
+
+  .landing-menu[open] {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .landing-menu > summary {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    width: fit-content;
+    margin-left: auto;
+    border: 1px solid var(--vc-line);
+    border-radius: var(--vc-radius);
+    padding: 0.5rem 0.75rem;
+    color: var(--vc-ink);
+    cursor: pointer;
+    font-weight: 800;
+  }
+
+  .landing-menu > summary:focus-visible {
+    outline: 2px solid var(--vc-teal);
+    outline-offset: 2px;
+  }
+
+  .landing-nav--mobile {
+    display: none;
+  }
+
+  .landing-menu[open] .landing-nav--mobile {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
+    margin-top: 0.75rem;
     gap: 0.75rem;
     overflow-x: visible;
     padding-block: 0;
@@ -949,8 +962,7 @@ body {
   }
 
   .landing-nav a::before,
-  .landing-brand::after,
-  .github-button::before {
+  .landing-brand::after {
     display: none;
   }
 
@@ -961,18 +973,6 @@ body {
   .landing-nav a:nth-child(even) {
     border-left: 1px solid var(--vc-line);
     padding-left: 0.75rem;
-  }
-
-  .github-button {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 14rem;
-    justify-content: center;
-    white-space: normal;
-  }
-
-  .github-button span {
-    overflow-wrap: anywhere;
   }
 
   .landing-main {

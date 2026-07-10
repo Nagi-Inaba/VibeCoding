@@ -11,6 +11,7 @@ export default defineConfig({
     starlight({
       title: 'Vibe Coding Guide',
       description: '短い指示でAIが動ける環境を作る、バイブコーディング初心者向けガイド。',
+      disable404Route: true,
       locales: {
         root: {
           label: '日本語',
@@ -32,13 +33,6 @@ export default defineConfig({
         },
       ],
       customCss: ['./src/styles/custom.css'],
-      social: [
-        {
-          icon: 'github',
-          label: '公開する前に',
-          href: `${base.endsWith('/') ? base : `${base}/`}publish-check/`,
-        },
-      ],
       sidebar: [
         {
           label: 'はじめる',
@@ -74,7 +68,7 @@ export default defineConfig({
           label: '失敗を減らす',
           items: [
             { label: 'チェックリスト', slug: 'checklists' },
-            { label: '公開する前に', slug: 'publish-check' },
+            { label: '人に使ってもらう前に', slug: 'publish-check' },
             { label: 'よくある失敗', slug: 'common-mistakes' },
             { label: 'うまく動かなくなったときの戻し方', slug: 'recover' },
           ],
