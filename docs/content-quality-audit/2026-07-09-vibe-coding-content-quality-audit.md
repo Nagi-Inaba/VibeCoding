@@ -16,8 +16,6 @@
 
 外部比較では、公式ドキュメントと信頼度の高い解説を優先した。主な比較対象は次の通り。
 
-- GitHub Copilot best practices: https://docs.github.com/en/copilot/get-started/best-practices
-- GitHub Copilot prompt engineering: https://docs.github.com/en/copilot/concepts/prompting/prompt-engineering
 - VS Code AI best practices: https://code.visualstudio.com/docs/agents/best-practices
 - Claude Code best practices: https://code.claude.com/docs/en/best-practices
 - Claude Code common workflows: https://code.claude.com/docs/en/common-workflows
@@ -45,7 +43,7 @@
 
 | 領域 | 評価 | 現サイトの状態 | 外部ベンチマークとの差 |
 | --- | --- | --- | --- |
-| 概念と役割分担 | 良い | `what-is-vibe-coding.mdx` が人間の目的設定・確認責任を明示 | Replit や GitHub Copilot の「人間が主導する」説明と整合 |
+| 概念と役割分担 | 良い | `what-is-vibe-coding.mdx` が人間の目的設定・確認責任を明示 | Replitの「人間が主導する」説明と整合 |
 | 最初の一周 | 要改善 | `practice.mdx` はあるが、元メモ、要件メモ、出力例、完成例、検証ログが不足 | Tom's Guide / Replit は小さく作って試す一周を前面に出す |
 | 作業場所と文脈設計 | 良い | `sources/`, `notes/`, `outputs/`, `logs/` の分離が明確 | 外部サイトより強い差別化点 |
 | 頼み方・プロンプト | 良い | `asking.mdx`, `templates.mdx`, `short-prompts.mdx` が実用的 | ただし表が多く、各セクションに「迷ったらこれだけ」がほしい |
@@ -60,7 +58,7 @@
 
 ### 1. Vibe Coding をプロンプト芸ではなく作業設計として扱えている
 
-`what-is-vibe-coding.mdx` は、AIが担当することと人間が担当することを分けている。これは GitHub Copilot や Replit の公式説明と同じ方向で、初心者にとって健全な入り口になっている。
+`what-is-vibe-coding.mdx` は、AIが担当することと人間が担当することを分けている。これはReplitの公式説明と同じ方向で、初心者にとって健全な入り口になっている。
 
 ### 2. フォルダ構成、作業記録、戻し方が強い
 

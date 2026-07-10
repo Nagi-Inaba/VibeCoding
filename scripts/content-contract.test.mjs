@@ -4,6 +4,23 @@ import test from 'node:test';
 
 const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
 
+const h2Section = (source, title) => {
+  const heading = `## ${title}`;
+  const start = source.indexOf(heading);
+  assert.ok(start >= 0, `missing section: ${heading}`);
+  const bodyStart = start + heading.length;
+  const nextHeading = source.slice(bodyStart).search(/^##\s/m);
+  return source.slice(start, nextHeading >= 0 ? bodyStart + nextHeading : source.length);
+};
+
+const between = (source, startMarker, endMarker) => {
+  const start = source.indexOf(startMarker);
+  assert.ok(start >= 0, `missing marker: ${startMarker}`);
+  const end = source.indexOf(endMarker, start + startMarker.length);
+  assert.ok(end > start, `missing marker after ${startMarker}: ${endMarker}`);
+  return source.slice(start, end);
+};
+
 test('404 uses a conflict-free custom route and stays base-aware', () => {
   const config = read('astro.config.mjs');
   const source = read('src/pages/404.astro');
@@ -23,6 +40,170 @@ test('practice completes a real mobile HTML verification cycle', () => {
   for (const phrase of ['outputs/reading-note.html', '375×844', '横スクロール', 'ブラウザで実際に']) {
     assert.match(source, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   }
+});
+
+test('beginner onboarding starts with one of the two supported coding assistants', () => {
+  const start = read('src/content/docs/start.mdx');
+  const onboarding = h2Section(start, '0. 使うAIを1つ選ぶ');
+  const toolChoice = start.indexOf('## 0. 使うAIを1つ選ぶ');
+  const workspace = start.indexOf('## 1. 作業フォルダを1つ作る');
+
+  assert.ok(toolChoice >= 0, 'the first step must explain how to choose a coding assistant');
+  assert.ok(workspace > toolChoice, 'tool choice and setup must come before workspace creation');
+  assert.equal((onboarding.match(/className="chapter-card"/g) ?? []).length, 2, 'each supported coding route must be a readable card');
+
+  for (const phrase of [
+    'コーディング支援AI',
+    'ChatGPTとCodex',
+    'ClaudeとClaude Code',
+    'どちらか1つを選べば始められます',
+    'PCの作業フォルダを直接開ける使い方',
+    'Webやクラウド上でリポジトリを操作する方法は、この手順の対象外',
+    'まだファイルを作成・変更しないでください',
+  ]) {
+    assert.match(start, new RegExp(phrase));
+  }
+
+  for (const domain of ['help.openai.com', 'docs.anthropic.com']) {
+    assert.match(onboarding, new RegExp(`https://${domain.replace('.', '\\.')}/`));
+  }
+
+  assert.doesNotMatch(onboarding, /GitHub Copilot|docs\.github\.com\/en\/copilot/);
+});
+
+test('beginner onboarding recommends the 20-dollar individual paid plans for the first cycle', () => {
+  const start = read('src/content/docs/start.mdx');
+  const onboarding = h2Section(start, '0. 使うAIを1つ選ぶ');
+
+  for (const phrase of [
+    'ChatGPT Plus（月20ドル）',
+    'Claude Pro（月20ドル）',
+    'このガイドの最初の一周には十分',
+    '米国の月払い価格',
+    '税や地域による価格差',
+  ]) {
+    assert.match(onboarding, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+});
+
+test('OpenAI onboarding follows the unified ChatGPT desktop app', () => {
+  const start = read('src/content/docs/start.mdx');
+  const onboarding = h2Section(start, '0. 使うAIを1つ選ぶ');
+
+  for (const phrase of [
+    '2026年7月9日',
+    '新しいChatGPTデスクトップアプリ',
+    'Chat、Work、Codex',
+    '既存のCodexアプリ',
+    '通常どおり更新',
+  ]) {
+    assert.match(onboarding, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+});
+
+test('beginner glossary explains the coding tools named on the first step', () => {
+  const glossary = read('src/content/docs/glossary.mdx');
+
+  for (const term of ['コーディング支援AI', 'Codex', 'Claude Code', 'IDE']) {
+    assert.match(glossary, new RegExp(`<tr>\\s*<td>${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</td>`));
+  }
+
+
+  assert.doesNotMatch(glossary, /GitHub Copilot/);
+});
+
+test('tool guidance states prerequisites, data handling, and advanced-tool boundaries', () => {
+  const tools = read('src/content/docs/tools.mdx');
+  const chooser = h2Section(tools, 'まず用途で選ぶ');
+  const typeless = h2Section(tools, 'Typeless');
+  const markItDown = h2Section(tools, 'MarkItDown');
+  const playwright = h2Section(tools, 'Playwright');
+  const productStarter = h2Section(tools, 'Product Starter');
+
+  assert.match(tools, /補助ツール/);
+  assert.equal((chooser.match(/className="chapter-card"/g) ?? []).length, 5, 'tool chooser must stay readable on mobile');
+  for (const phrase of ['紹介者に報酬が発生する場合があります', 'クラウドで処理', 'マイク', 'アクセシビリティ権限']) assert.match(typeless, new RegExp(phrase));
+  for (const phrase of ['Python 3.10以上', '信頼できないファイルを直接処理しない']) assert.match(markItDown, new RegExp(phrase));
+  assert.match(playwright, /Playwright本体と操作用ブラウザ/);
+  for (const phrase of ['第三者が公開している高度なスターター', '初心者の最初の一歩には使いません']) assert.match(productStarter, new RegExp(phrase));
+});
+
+test('reader-facing copy avoids internal, dismissive, and publication-first wording', () => {
+  const files = [
+    'src/pages/index.astro',
+    'src/content/docs/start.mdx',
+    'src/content/docs/what-is-vibe-coding.mdx',
+    'src/content/docs/asking.mdx',
+    'src/content/docs/templates.mdx',
+    'src/content/docs/short-prompts.mdx',
+    'src/content/docs/tools.mdx',
+    'src/content/docs/my-vibe-coding.mdx',
+  ];
+  const combined = files.map(read).join('\n');
+
+  for (const phrase of [
+    '気分で丸投げ',
+    '適当にダラダラ',
+    '自分の環境では',
+    'たぶん動いています',
+    'やはりGitHub',
+    'プロのエンジニアが使う',
+    '仕上げ・公開前',
+    '利用回数や料金を無駄にしにくく',
+    '利用回数や料金を節約したい',
+    '公開前チェックをしてください',
+    '公開前のレビューをしてください',
+  ]) {
+    assert.doesNotMatch(combined, new RegExp(phrase));
+  }
+
+  assert.match(read('src/content/docs/asking.mdx'), /仕上げる・人に使ってもらう前/);
+  assert.match(read('src/content/docs/templates.mdx'), /利用範囲に合わせて確認したい/);
+});
+
+test('advanced-page sidebar anchors follow the reader-facing headings', () => {
+  const config = read('astro.config.mjs');
+  const advanced = read('src/content/docs/my-vibe-coding.mdx');
+
+  assert.match(advanced, /^## 既存の道具から始める$/m);
+  assert.match(advanced, /^## 自分の見方をAIに伝える$/m);
+  assert.match(config, /\/my-vibe-coding\/#既存の道具から始める/);
+  assert.match(config, /\/my-vibe-coding\/#自分の見方をaiに伝える/);
+  assert.doesNotMatch(config, /#まず楽をする|#自分をaiだと思って考える/);
+});
+
+test('GitHub search copy describes creation date and current star order accurately', () => {
+  const advanced = read('src/content/docs/my-vibe-coding.mdx');
+
+  assert.match(advanced, /直近1か月に作成され、現在のスター数が多い/);
+  assert.match(advanced, /created:>\$since/);
+  assert.match(advanced, /--sort stars/);
+  assert.doesNotMatch(advanced, /直近1か月(?:で|に)スター数が伸び/);
+});
+
+test('the first template follows the one-file onboarding path', () => {
+  const templates = read('src/content/docs/templates.mdx');
+  const firstTemplate = between(templates, '<h3>最初に始めたい</h3>', '<h3>作業前に整理したい</h3>');
+
+  assert.match(templates, /準備がまだの場合は、先に \[はじめの一歩\]/);
+  assert.match(firstTemplate, /README\.md を1つだけ/);
+  assert.doesNotMatch(firstTemplate, /必要なフォルダとファイル|最小の形まで進め/);
+});
+
+test('rights and accessibility checks apply before both sharing and publication', () => {
+  const templates = read('src/content/docs/templates.mdx');
+  const detailedReview = between(templates, '次の利用範囲に合わせてレビューしてください。', '問題がある場所と直し方を分けてください。');
+
+  assert.match(detailedReview, /権利とアクセシビリティを、成果物と想定する利用者に応じて確認/);
+  assert.match(detailedReview, /一般公開する場合は、公開先、公開範囲、公開する版、停止方法/);
+  assert.doesNotMatch(detailedReview, /一般公開する場合は[^\n]*(?:権利|アクセシビリティ)/);
+});
+
+test('high-stakes guidance requires current primary sources or a professional', () => {
+  const shortPrompts = read('src/content/docs/short-prompts.mdx');
+
+  assert.match(shortPrompts, /AIだけで最終判断せず/);
+  assert.match(shortPrompts, /最新の一次情報や専門家/);
 });
 
 test('publish checklist records deployment evidence and official recovery guidance', () => {

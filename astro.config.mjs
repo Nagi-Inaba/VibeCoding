@@ -74,13 +74,13 @@ export default defineConfig({
           ],
         },
         {
-          label: '一気にステップアップ',
+          label: '発展編',
           items: [
             { label: '大きく近道する考え方', slug: 'my-vibe-coding' },
             { label: 'よく使うツール', slug: 'tools' },
             { label: 'Typeless', link: '/tools/#typeless' },
-            { label: '既存ツールを探す', link: '/my-vibe-coding/#まず楽をする' },
-            { label: 'AIと目線を合わせる', link: '/my-vibe-coding/#自分をaiだと思って考える' },
+            { label: '既存の道具から始める', link: '/my-vibe-coding/#既存の道具から始める' },
+            { label: '自分の見方をAIに伝える', link: '/my-vibe-coding/#自分の見方をaiに伝える' },
             { label: 'プロの進め方に乗せる', link: '/my-vibe-coding/#いきなりコードを書かせない' },
             { label: 'AIが考える余地を減らす', link: '/my-vibe-coding/#aiが考える余地を減らす' },
             { label: '公式ドキュメントを使う', link: '/my-vibe-coding/#公式ドキュメントを吸収する' },

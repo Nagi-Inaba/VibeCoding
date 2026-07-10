@@ -51,14 +51,14 @@ const navItems = [
         <section class="hero-grid" aria-labelledby="hero-title">
           <div class="hero-copy">
             <h1 id="hero-title">短い指示でAIが動ける環境を作る</h1>
-            <p>プロンプトを長くする前に、AIが迷わない作業場所と頼み方を整える。</p>
+            <p>使うAIを1つ選び、AIが迷わない作業場所と頼み方を整える。</p>
             <div class="hero-actions" aria-label="主要な導線">
               <a href={link('start/')}>はじめの一歩から始める <span aria-hidden="true">→</span></a>
               <a href={link('practice/')}>小さな実践例を1回通す <span aria-hidden="true">→</span></a>
             </div>
             <div class="ai-shortcut" aria-labelledby="ai-shortcut-title">
-              <strong id="ai-shortcut-title">一気に進めたいとき</strong>
-              <p>このサイトのURLをAIに貼って「この内容を読んで、ここに書いてある進め方で私の作業環境を整えたいです」と頼むと、フォルダ構成、最初の依頼文、確認手順までまとめやすくなります。</p>
+              <strong id="ai-shortcut-title">まとめて整理したいとき</strong>
+              <p>作業フォルダを開けるコーディング支援AIにこのサイトのURLを貼り、「この内容を読んで、ここに書いてある進め方で私の作業環境を整えたいです」と頼むと、フォルダ構成、最初の依頼文、確認手順を整理できます。</p>
               <p>AIがURLを読めないときは、まず「はじめの一歩」と「場面別の頼み方」の本文を貼ってください。全部を一度に渡すより、必要なページから順番に渡す方が安定します。</p>
               <a href={link('my-vibe-coding/')}>大きく近道する考え方を見る <span aria-hidden="true">→</span></a>
               <a href={link('tools/')}>よく使うツールを開く <span aria-hidden="true">→</span></a>
@@ -76,12 +76,12 @@ const navItems = [
               <a href={link('start/')}>はじめの一歩</a>、
               <a href={link('practice/')}>小さな実践例</a>、
               <a href={link('checklists/')}>チェックリスト</a>
-              だけで十分です。用語に迷ったら <a href={link('glossary/')}>用語集</a>、他の人に使ってもらうなら <a href={link('publish-check/')}>人に使ってもらう前に</a>、大きく近道したいときだけ <a href={link('tools/')}>ツール</a> を開きます。
+              だけで十分です。用語に迷ったら <a href={link('glossary/')}>用語集</a>、他の人に使ってもらうなら <a href={link('publish-check/')}>人に使ってもらう前に</a>、補助ツールが必要になったときだけ <a href={link('tools/')}>ツール</a> を開きます。
             </p>
             <div class="hero-points" aria-label="このサイトで学べること">
               <div class="point">
-                <strong>要件メモで開始</strong>
-                <span>作りたいもの、今回やること、やらないことを短く決める。</span>
+                <strong>使うAIを1つ選ぶ</strong>
+                <span>CodexかClaude Codeのどちらかから、使うものを1つ決める。</span>
               </div>
               <div class="point">
                 <strong>戻れる地点を作る</strong>
@@ -100,7 +100,7 @@ const navItems = [
               <strong>Vibe Coding Guide</strong>
               <span aria-current="page">はじめに</span>
               <span>はじめの一歩</span>
-              <span>Typelessで音声入力</span>
+              <span>小さな実践例</span>
               <span>短い指示が効く理由</span>
               <span>場面別の頼み方</span>
               <span>フォルダ構成</span>
@@ -116,9 +116,9 @@ const navItems = [
                   <tr><th>場面</th><th>指示</th><th>効く理由</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>機能を作る</td><td>ログイン機能を追加して</td><td>目的が明確で、必要な範囲が限定される。</td></tr>
-                  <tr><td>バグを直す</td><td>ログインでエラーになる原因を直して</td><td>再現手順が明確で、修正箇所が特定しやすい。</td></tr>
-                  <tr><td>整理する</td><td>認証まわりのコードを整理して</td><td>対象が明確で、影響範囲を判断しやすい。</td></tr>
+                  <tr><td>機能を作る</td><td>読書メモを1ページで表示して</td><td>作るものと範囲が明確になる。</td></tr>
+                  <tr><td>バグを直す</td><td>スマホで表がはみ出す原因を直して</td><td>起きている問題と確認する画面が分かる。</td></tr>
+                  <tr><td>整理する</td><td>文章を見出しと本文に分けて</td><td>対象と分け方が明確になる。</td></tr>
                   <tr><td>確認する</td><td>初めて見る人に分かりにくい表現を見て</td><td>確認観点が決まり、指摘が具体的になる。</td></tr>
                 </tbody>
               </table>
@@ -143,7 +143,7 @@ const navItems = [
 
         <section class="landing-next" aria-labelledby="next-title">
           <h2 id="next-title">短い指示が効く理由</h2>
-          <p>AIは「どのフォルダで」「何を作りたいか」が明確だと、短い指示でも正しく動けます。まずは、作業フォルダを1つ作り、必要な構成をAIに作らせるところから始めます。</p>
+          <p>使うコーディング支援AIを1つ決め、「どのフォルダで」「何を作りたいか」を伝えると、短い指示でも作業範囲を合わせやすくなります。最初の準備から確認したい人は、「はじめの一歩」から始めてください。</p>
           <div class="reason-strip">
             <div class="reason-item">
               <h3>場所が1つ決まっている</h3>
