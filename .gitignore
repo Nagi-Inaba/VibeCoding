@@ -9,3 +9,4 @@ npm-debug.log*
 .astro-preview.pid
 astro-preview.*.log
 playwright-*.png
+.vercel/

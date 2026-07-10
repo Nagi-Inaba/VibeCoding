@@ -19,5 +19,6 @@ npm run build
 
 ## Deployment
 
-`main` ブランチへ push すると、GitHub Actions で GitHub Pages へデプロイされます。
+`main` ブランチへpushすると、Vercelへ自動デプロイされます。
 
+公開URL: https://vibecoding-jp.vercel.app

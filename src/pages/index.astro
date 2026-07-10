@@ -5,6 +5,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const link = (path) => new URL(path, new URL(base, 'https://example.com')).pathname;
+const canonicalUrl = Astro.site ? new URL(base, Astro.site).href : undefined;
 const navItems = [
   ['start/', 'はじめの一歩'],
   ['what-is-vibe-coding/', '考え方'],
@@ -26,6 +27,8 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="短い指示でAIが動ける環境を作る、バイブコーディング初心者向けガイド。" />
     <title>Vibe Coding Guide</title>
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     <link rel="icon" href={link('favicon.svg')} type="image/svg+xml" />
   </head>
   <body>

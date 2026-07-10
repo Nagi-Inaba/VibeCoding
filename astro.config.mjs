@@ -2,10 +2,10 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import starlight from '@astrojs/starlight';
 
-const base = process.env.BASE_PATH ?? '/VibeCoding';
+const base = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
-  site: process.env.SITE ?? 'https://nagi-inaba.github.io',
+  site: process.env.SITE ?? 'https://vibecoding-jp.vercel.app',
   base,
   integrations: [
     starlight({

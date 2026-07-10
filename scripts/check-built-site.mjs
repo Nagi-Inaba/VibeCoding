@@ -244,7 +244,7 @@ function runCli() {
   const report = inspectBuiltSite({
     root: DEFAULT_ROOT,
     dist: path.join(DEFAULT_ROOT, 'dist'),
-    basePath: process.env.BASE_PATH ?? '/VibeCoding',
+    basePath: process.env.BASE_PATH ?? '/',
   });
 
   console.log(JSON.stringify(report, null, 2));

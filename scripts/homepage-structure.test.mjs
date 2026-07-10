@@ -6,7 +6,8 @@ test('homepage header uses a mobile menu without the publish-check GitHub afford
   const html = fs.readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
   const header = html.match(/<header class="landing-topbar">[\s\S]*?<\/header>/)?.[0] ?? '';
   const menu = header.match(/<details class="landing-menu">[\s\S]*?<\/details>/)?.[0] ?? '';
-  const basePath = `/${String(process.env.BASE_PATH ?? '/VibeCoding').replace(/^\/+|\/+$/g, '')}`;
+  const normalizedBase = String(process.env.BASE_PATH ?? '/').replace(/^\/+|\/+$/g, '');
+  const basePath = normalizedBase ? `/${normalizedBase}` : '';
   const heroActions = html.match(/<div class="hero-actions"[\s\S]*?<\/div>/)?.[0] ?? '';
   const publishHref = `${basePath}/publish-check/`;
   const publishLinkCount = html.split(`href="${publishHref}"`).length - 1;
