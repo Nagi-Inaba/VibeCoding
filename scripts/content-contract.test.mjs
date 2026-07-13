@@ -307,6 +307,7 @@ test('common checks cover websites, skills, and agents', () => {
 
 test('GitHub Pages guidance is generic and defers current steps to official documentation', () => {
   const publish = read('src/content/docs/publish-check.mdx');
+  const glossary = read('src/content/docs/glossary.mdx');
 
   assert.match(publish, /Astroなどビルドが必要なサイトでは、GitHub Pagesの公開元に GitHub Actions を使えます。最新の設定方法はGitHub公式ドキュメントで確認します。/);
   assert.match(publish, /公開ワークフローで、ビルドを行うjobと公開反映を行うjobを特定する。/);
@@ -314,6 +315,10 @@ test('GitHub Pages guidance is generic and defers current steps to official docu
   assert.match(publish, /対象runでビルドを行うjob（例: `build`）/);
   assert.match(publish, /同じ対象runで公開反映を行うjob（例: `deploy`）/);
   assert.match(publish, /https:\/\/docs\.github\.com\/en\/actions\/reference\/workflows-and-actions\/workflow-syntax#jobsjob_id/);
+  assert.match(publish, /GitHub Enterprise Cloudの組織/);
+  assert.match(publish, /一部のプロジェクトサイトにアクセス制御/);
+  assert.match(publish, /https:\/\/docs\.github\.com\/en\/enterprise-cloud@latest\/pages\/getting-started-with-github-pages\/changing-the-visibility-of-your-github-pages-site/);
+  assert.match(glossary, /GitHub Enterprise Cloudの組織で一部のプロジェクトサイトにアクセス制御/);
   assert.match(publish, /そのサイトで定めたQAコマンドを実行し、結果を記録する。コマンドは `package\.json` や `README` で確認する。失敗したら公開へ進まない。/);
   assert.doesNotMatch(publish, /このサイトはビルド|main へのpush|npm run qa|正本に/);
 });
